@@ -1,0 +1,29 @@
+<#--
+    Copyright (c) 2020 Arthur Sadykov.
+-->
+<#assign licenseFirst = "/*">
+<#assign licensePrefix = " * ">
+<#assign licenseLast = " */">
+<#include "../Licenses/license-${project.license}.txt">
+
+<#if package?? && package != "">
+package ${package};
+</#if>
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+/**
+*
+* @author: ${user}
+*/
+@Controller
+public class ${name} {
+
+    @RequestMapping(value = "")
+    public String doSomething(Model model) {
+
+        return "";
+    }
+}

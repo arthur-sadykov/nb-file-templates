@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+AutoUpdate-Show-In-Client: true
+OpenIDE-Module: nb.filetemplates
+OpenIDE-Module-Localizing-Bundle: nb/filetemplates/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0
+

@@ -1,0 +1,60 @@
+<#--
+    Copyright (c) 2020 Arthur Sadykov.
+-->
+<#assign licenseFirst = "/*">
+<#assign licensePrefix = " * ">
+<#assign licenseLast = " */">
+<#include "../Licenses/license-${project.license}.txt">
+
+<#if package?? && package != "">
+package ${package};
+</#if>
+
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.Array;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
+import junit.framework.Test;
+import org.netbeans.jellytools.JellyTestCase;
+import org.netbeans.jellytools.NbDialogOperator;
+import org.netbeans.jellytools.ProjectsTabOperator;
+import org.netbeans.jellytools.actions.OpenAction;
+import org.netbeans.jellytools.nodes.Node;
+import org.netbeans.jellytools.nodes.ProjectRootNode;
+import org.openide.filesystems.FileObject;
+import org.openide.filesystems.FileUtil;
+import org.openide.util.Exceptions;
+
+/**
+*
+* @author: ${user}
+*/
+public class ${name} extends JellyTestCase {
+
+    private static final String SAMPLE_PROJECT_NAME = "SampleProject";
+
+    public ${name}(String testName) {
+        super(testName);
+    }
+
+    public static Test suite() {
+        return createModuleTest(${name}.class);
+    }
+
+    @Override
+    public void setUp() throws IOException {
+        openDataProjects(SAMPLE_PROJECT_NAME);
+        ProjectsTabOperator projectsTabOperator = ProjectsTabOperator.invoke();
+        ProjectRootNode projectRootNode = projectsTabOperator.getProjectRootNode(SAMPLE_PROJECT_NAME);
+        Node node = new Node(projectRootNode, "Source Packages|sampleproject|" + SAMPLE_PROJECT_NAME);
+        OpenAction openAction = new OpenAction();
+        openAction.performAPI(node);
+    }
+
+    public void testSomeBehaviour() {
+
+    }
+}
